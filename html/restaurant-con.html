@@ -1,0 +1,71 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0, width=device-width"/>
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="address=no" />
+		<title>api</title>
+		<link rel="stylesheet" type="text/css" href="../css/api.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/restaurant.css" />
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<script id="res-template" type="text/x-dot-template">
+					<div id="banner" style="background-image:url(../image/help.jpg)" >
+					<!--<a tapmode="" onclick="openAlbum('');">点击显示图片</a>-->
+					</div>
+					<div id="content">
+					<div id="mer-wrap" class="shadow">
+					<div id="merchant" class="clearfix">
+					<img src="../image/touxiang_user.png" />
+					<h3>{{=it.title}}</h3>
+					<label>
+					{{=it.content}}
+					</label>
+					</div>
+					<ul>
+					<li class="add"><a>{{=it.addr}}</a></li>
+					<li class="tel"><a tapmodel="" onclick="call(this);" rel="">{{=it.tel}}</a></li>
+					</ul>
+					</div>
+					<h3 id="info"></h3>
+					<ul class="info shadow">
+					<li class="time">时间:<em>{{=it.time}}</em></li>
+					</ul>
+					</div>
+				</script>
+				<div id="res-content"></div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../script/hammer.js"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/common.js"></script>
+	<script type="text/javascript" src="../script/doT.min.js"></script>
+	<script type="text/javascript" src="../script/restaurant-con.js"></script>
+</html>
+<script>
+	apiready = function() {
+		var dataId = api.pageParam.dataId;
+		var model = api.require("model");
+		model.config({
+			appKey : 'EE17CFF5-1080-F645-51E8-7CCEA5301B8C',
+			host : 'https://d.apicloud.com'
+		});
+		model.findById({
+			class : "information",
+			id : dataId
+		}, function(ret, err) {
+			if (ret) {
+			 //  alert("成功,查找数据为："+JSON.stringify(ret));
+				 var content = $api.byId('res-content');
+					var tpl = $api.byId('res-template').innerHTML;
+					var tempFn = doT.template(tpl);
+					content.innerHTML = tempFn(ret);				
+			}
+		});
+	}
+</script>

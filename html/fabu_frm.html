@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title></title>
+		<!--AUI样式框架-->
+		<link rel="stylesheet" type="text/css" href="../css/aui/aui.css" />
+		<!--拓展AUI字体图标-->
+		<link rel="stylesheet" type="text/css" href="../css/aui/iconfont.css" />
+		<!--通用样式-->
+		<link rel="stylesheet" type="text/css" href="../css/aui/winu-ui.css" />
+		<style type="text/css">
+			body {
+				padding-top:15px;
+			}
+			.user-pic {
+				height:80px;
+				width:80px;
+				margin:15px;
+			}
+			.user-pic img {
+				height:80px;
+				width:80px;
+				border:1px solid #ccc;
+			}
+			.user-pic .edit {
+				right:0;
+				bottom:0;
+				z-index:100;
+				background:#eee;
+				color:#444;
+				width:25px;
+				height:25px;
+			}
+			.aui-input-row .aui-input-addon {
+			}
+			.fabu {
+				font-size:14px;
+				width:280px;
+				height:45px;
+				border:1px solid;
+				margin:auto;
+				border-radius:25px;
+				background-color:#00C8B8;
+				line-height:45px;
+				color:#FFFFFF;
+				text-align:center;
+				margin-top:20px;
+			}
+			.cancle {
+				font-size:16px;
+				width:280px;
+				height:45px;
+				border:1px solid #999999;
+				margin:auto;
+				border-radius:25px;
+				margin-top:20px;
+				line-height:45px;
+				color:#000000;
+				text-align:center;
+			}
+			#fb_picture {
+				height:125px;
+				position:relative;
+				background-repeat:no-repeat;
+				background-position:center;
+				-webkit-background-size:cover;
+				background-size:cover;
+				-webkit-transition:height 80ms linear;
+				transition:height 80ms linear;
+			}
+		</style>
+	</head>
+	<body>
+		<img id="fb_picture" src="../image/fabu.png"></img>
+		<div class="aui-content aui-card" id="frm">
+			<div class="aui-form" style="border-bottom: 1px solid #c8c7cc;">
+				<div class="aui-input-row winu-clear-both winu-min-height winu-width-100">
+					<i class="aui-input-addon  aui-text-info"></i>
+					<input type="text" id="title" class="aui-input"  placeholder="请输入标题" name="title" data-rule="*" value="" data-nullmsg="请输入标题" data-errmsg="标题格式不正确" />
+				</div>
+				<div class="aui-input-row winu-clear-both winu-min-height winu-width-100">
+					<i class="aui-input-addon  aui-text-info"></i>
+					<input type="text" id="content" class="aui-input"  placeholder="请输入内容" name="content" data-rule="*" value="" data-nullmsg="请输入内容" data-errmsg="内容格式不正确" />
+				</div>
+				<div class="aui-input-row winu-clear-both winu-min-height winu-width-100">
+					<i class="aui-input-addon  aui-text-info"></i>
+					<input type="text" id="tel" class="aui-input"  placeholder="请输入电话号码" name="tel" data-rule="*" value="" data-nullmsg="请输入电话号码" data-errmsg="电话号码格式不正确" />
+				</div>
+				<div class="aui-input-row winu-clear-both winu-min-height winu-width-100">
+					<i class="aui-input-addon  aui-text-info"></i>
+					<input type="text" id="time" class="aui-input"  placeholder="请输入时间" name="tel" data-rule="*" value="" data-nullmsg="请输入时间" data-errmsg="时间格式不正确" />
+				</div>
+				<div class="aui-input-row winu-clear-both winu-min-height winu-width-100">
+					<i class="aui-input-addon  aui-text-info"></i>
+					<input type="text" id="addr" class="aui-input"  placeholder="请输入地点" name="tel" data-rule="*" value="" data-nullmsg="请输入地点" data-errmsg="地点格式不正确" />
+				</div>
+				<!--				<textarea type="text" id="content" class="aui-input" style=" height:250px" value="" placeholder="请输入详情(包括时间、地点，50字以内)"></textarea>
+				-->
+				<div style="text-align: center ">
+					<p class="fabu" onclick="fabu()">
+						发布
+					</p>
+					<p class="cancle" onclick="setback()">
+						取消
+					</p>
+				</div>
+			</div>
+		</div>
+		</div>
+	</body>
+	<script id="add_tpl"  type="text/x-dot-template">
+		<div class="time">
+		<div class="time_top">
+		{{=new Date(Date.parse(it.createdAt)).Format('yyyy/MM/dd hh:mm:ss')}}</div>
+		</div>
+		<div id="chu_ping">
+		<div class="shop">
+		<div class="shop_item_group">
+		<div class="shop_item clearfix">
+		<i class="checkBox"></i>
+		<div class="shop_item_left pull-left">
+		<img src="../image/touxiang_user.png" alt="" class="item_icon">
+		</div>
+		<div class="shop_item_center" tapmode="tap-active" data-url="http://baidu.com">
+		<span class="img"></span>
+		<span class="title">
+		{{=it.title}}
+		</span>
+		<span class="bottomline"></span>
+		<div class="shop_item_right pull-right">
+		<img src="../image/right1.jpg" alt="" class="right1">
+		<img src="../image/right.jpg" alt="" class="right">
+		<div class="count_group clearfix"></div>
+		</div>
+		<div style="
+		width: 227px;
+		height: 1px;
+		margin: -1px 1px 1px -9px;
+		padding: 0px;
+		background-color: #23d52e;
+		overflow: hidden;"></div>
+		<span class="description">{{=it.content}}</span>
+		<span> <span class="description2" id="help_or_not" value="">{{=it.state}}</span>
+		<div class="tag_group">
+		<i><img src="../image/fenxiang.jpg" class="fenxiang" onclick="share()" style="margin-right: 17px;width: 23px;height: 23px;"></img></i>
+		<i><img class="help_button" src="../image/help_button.png" onclick="reply('{{=it.id}}')" style="margin-right: 17px;width: 23px;height: 23px;b"></img></i>
+		</div>
+		</div> </span>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+	</script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<!--Zepto.js,类似Jquery-->
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<!--通用脚本库-->
+	<script type="text/javascript" src="../script/winu-base.js"></script>
+	<!--表单验证-->
+	<script type="text/javascript" src="../script/availdate-v1.0.2.js"></script>
+	<script type="text/javascript" src="../script/SHA1.js"></script>
+	<script type="text/javascript" src="../script/main.js"></script>
+		<script type="text/javascript" src="../script/doT.min.js"></script>
+
+	<script type="text/javascript">
+		apiready = function() {
+		};
+	</script>
+</html>

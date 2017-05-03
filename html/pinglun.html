@@ -1,0 +1,77 @@
+<!doctype html>	
+<html>	
+<head>	
+    <meta charset="utf-8">	
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>	
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">	
+    <title>frame</title>	
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>	
+        <link rel="stylesheet" type="text/css" href="../css/aui/aui.css"/>	
+
+    <style>	
+        html, body {	
+            height: 100%;	
+            min-width: 320px;	
+        }	
+	
+        body {	
+            font-size: 14px;	
+            background-color: #F8F8F8;	
+        }	
+	
+        * {	
+            outline: 0;	
+        }	
+	        .form {	
+            padding-bottom: 10px;	
+            border-bottom: 1px solid #E5E5E5;	
+        }	
+        .textarea {	
+            margin: 10px 0;	
+            height: 65px;	
+            text-align: center;	
+        }	
+	
+        textarea {	
+            width: 96%;	
+            height: 100%;	
+            background-color: #ffffff;	
+            border: 1px solid #E4E4E4;	
+            padding: 5px;	
+            resize: none;	
+        }	
+	
+        .content {	
+            padding: 10px;	
+        }	  
+    </style>	
+</head>	
+<body>	
+<div class="content">	
+    <div class="form">	
+        <div class="textarea">	
+            <textarea id="liuyan" placeholder="请输入留言（包括时间，地点，30字以内）" value="" style="">		
+            </textarea>	           
+        </div>	
+       
+    </div>	
+    <div class="hc" style="margin-left: 10px">
+     <div class="aui-btn aui-bg-info"  id="help" onclick="help()">
+			帮助
+		</div>
+		<div class="aui-btn aui-bg-info"  id="help" onclick="setback()">
+			取消
+		</div>
+		
+	</div>	
+</div>	
+
+<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" src="../script/main.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+		};
+		
+	</script>
+</body>	
+</html>	

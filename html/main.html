@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<link rel="stylesheet" href="./css/api.css" />
+		<link rel="stylesheet"  href="./css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/aui/aui.2.0.css" />
+		<link rel="stylesheet" type="text/css" href="../css/load.css" />
+		<link rel="stylesheet" type="text/css" href="./css/aui/aui.2.0.css" />
+		<link rel="stylesheet" type="text/css" href="./css/aui/aui-iconfont.2.0.ttf.css" />
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div id="list" ></div>
+			</div>
+		</div>
+	</body>
+	<script id="list_tpl"  type="text/x-dot-template">
+		{{for (var i =0 ; i<=it.length-1; i++) {}}
+		<div class="time">
+		<div class="time_top">
+		{{=new Date(Date.parse(it[i].createdAt)).Format('yyyy/MM/dd hh:mm:ss')}}			</div>
+		</div>
+		<div id="chu_ping">
+		<div class="shop">
+		<div class="shop_item_group">
+		<div class="shop_item clearfix">
+		<i class="checkBox"></i>
+		<div class="shop_item_left pull-left">
+		<img src="../image/touxiang_user.png" alt="" class="item_icon">
+		</div>
+		<div class="shop_item_center" tapmode="tap-active" data-url="http://baidu.com">
+		<span class="img"></span>
+		<span class="title">
+		{{=it[i].title}}
+		</span>
+		<span class="bottomline"></span>
+		<div class="shop_item_right pull-right">
+		<img src="../image/right1.jpg" alt="" class="right1">
+		<img src="../image/right.jpg" alt="" class="right">
+		<div class="count_group clearfix"></div>
+		</div>
+		<div style="
+		width: 227px;
+		height: 1px;
+		margin: -1px 1px 1px -9px;
+		padding: 0px;
+		background-color: #23d52e;
+		overflow: hidden;"></div>
+		<span class="description">{{=it[i].content}}</span>
+		
+		<div style="" class="tag_group">
+		<li style="float:left;margin-right:auto;" class="description2" id="help_or_not" value="">{{=it[i].state}}</li>
+		
+		<li style="float:left;margin-left:75px;margin-right:auto;">
+		<i class="aui-iconfont aui-icon-share" style="margin-right: 20px;" onclick="share()" ></i>
+		<p>分享</p>
+		</li>
+		
+		<li style="float:left; margin-left:30px;margin-right:auto;">
+		<i class="aui-iconfont aui-icon-more"  onclick="reply('{{=it[i].id}}')"></i>
+		<p>更多</p>
+		</li>
+		</div>
+		</div> 
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		{{} }}
+	</script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/doT.min.js"></script>
+	<script type="text/javascript" src="../script/common.js"></script>
+	<script type="text/javascript" src="../script/main.js"></script>
+	<script type="text/javascript" src="../script/fabu.js"></script>
+</html>
